@@ -3,6 +3,8 @@ import re
 import pandas as pd
 import nltk
 from nltk.corpus import stopwords
+from sklearn.feature_extraction.text import TfidfVectorizer
+import joblib
 
 nltk.download('stopwords', quiet=True)
 
@@ -33,3 +35,34 @@ class TextPreprocessor:
         """AC3: Tokenization function created"""
         # Using simple split first (we'll improve later)
         return text.split()
+    
+    def __init__(self):
+        self.stop_words = set(stopwords.words('english'))
+        self.vectorizer = None
+
+    def fit_vectorizer(self, texts):
+        """AC4: Vectorization (TF-IDF) implemented"""
+        # Full preprocessing pipeline
+        processed = []
+        for text in texts:
+            cleaned = self.clean_text(text)
+            no_stop = self.remove_stopwords(cleaned)
+            processed.append(no_stop)
+        
+        self.vectorizer = TfidfVectorizer(
+            ngram_range=(1, 2),
+            min_df=2,
+            max_features=50000,
+            sublinear_tf=True
+        )
+        self.vectorizer.fit(processed)
+        return self.vectorizer
+
+    def transform(self, texts):
+        """Transform new text using fitted vectorizer"""
+        processed = []
+        for text in texts:
+            cleaned = self.clean_text(text)
+            no_stop = self.remove_stopwords(cleaned)
+            processed.append(no_stop)
+        return self.vectorizer.transform(processed)
