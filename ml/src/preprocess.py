@@ -5,6 +5,7 @@ import nltk
 from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import TfidfVectorizer
 import joblib
+import os
 
 nltk.download('stopwords', quiet=True)
 
@@ -82,3 +83,15 @@ class TextPreprocessor:
         df[['label']].to_csv(f"{output_dir}/y_labels.csv", index=False)
         
         print(f"✅ Preprocessed data saved to {output_dir}/")
+
+    def preprocess_for_inference(self, text):
+        """AC6: Preprocessing function reusable for inference"""
+        cleaned = self.clean_text(text)
+        no_stop = self.remove_stopwords(cleaned)
+        if self.vectorizer is not None:
+            return self.vectorizer.transform([no_stop])
+        return no_stop  # fallback if not fitted
+    
+    def load_vectorizer(self, path="artifacts/tfidf_vectorizer.joblib"):
+        self.vectorizer = joblib.load(path)
+        print("✅ Vectorizer loaded for inference")
