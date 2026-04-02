@@ -22,3 +22,14 @@ class TextPreprocessor:
         text = re.sub(r'[^a-z0-9\s]', ' ', text)
         text = re.sub(r'\s+', ' ', text).strip()
         return text
+    
+    def remove_stopwords(self, text):
+        """AC2: Stop word removal configured"""
+        tokens = text.split()  # simple split for now
+        tokens = [word for word in tokens if word not in self.stop_words]
+        return " ".join(tokens)
+    
+    def tokenize_text(self, text):
+        """AC3: Tokenization function created"""
+        # Using simple split first (we'll improve later)
+        return text.split()
