@@ -66,3 +66,19 @@ class TextPreprocessor:
             no_stop = self.remove_stopwords(cleaned)
             processed.append(no_stop)
         return self.vectorizer.transform(processed)
+    
+    def save_preprocessed_data(self, df, output_dir="artifacts"):
+        """AC5: Preprocessed data saved"""
+        os.makedirs(output_dir, exist_ok=True)
+        
+        # Assume df has 'text' and 'label' columns
+        X = self.transform(df['text'].tolist())
+        
+        # Save sparse matrix + vectorizer
+        import scipy.sparse as sp
+        sp.save_npz(f"{output_dir}/X_preprocessed.npz", X)
+        joblib.dump(self.vectorizer, f"{output_dir}/tfidf_vectorizer.joblib")
+        
+        df[['label']].to_csv(f"{output_dir}/y_labels.csv", index=False)
+        
+        print(f"✅ Preprocessed data saved to {output_dir}/")
