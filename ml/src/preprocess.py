@@ -1,10 +1,17 @@
 # src/text_preprocessor.py
 import re
 import pandas as pd
+import nltk
+from nltk.corpus import stopwords
+
+nltk.download('stopwords', quiet=True)
 
 class TextPreprocessor:
     def __init__(self):
         pass
+
+    def __init__(self):
+        self.stop_words = set(stopwords.words('english'))
 
     def clean_text(self, text):
         """AC1: Text cleaning - lowercase + punctuation removal"""
