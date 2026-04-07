@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fake Review Detection System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">⬡</span>
+        <span class="logo-text">ReviewGuard</span>
+      </div>
+      <div class="model-badge" id="modelBadge">
+        <span class="badge-dot"></span>
+        <span class="badge-label">Checking API…</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="hero">
+      <h1 class="hero-title">
+        Fake Review<br />
+        <span class="accent">Detection System</span>
+      </h1>
+      <p class="hero-sub">Analyse customer reviews instantly and detect manipulation with confidence</p>
+    </section>
+
+    <div class="panel">
+      <div class="input-group">
+        <label class="input-label">Review Text</label>
+        <textarea
+          id="reviewText"
+          class="textarea"
+          placeholder="Paste a review here…&#10;&#10;e.g. 'This product is absolutely amazing! Best purchase ever! Buy it now!'"
+          rows="6"
+        ></textarea>
+      </div>
+
+      <div class="meta-row">
+        <div class="meta-field">
+          <label class="input-label small">Model Version</label>
+          <select id="modelVersionSelect" class="input-sm">
+            <option value="v1">v1</option>
+            <option value="v2">v2</option>
+            <option value="v3" selected>v3</option>
+          </select>
+        </div>
+        <div class="meta-field">
+          <label class="input-label small">Rating (1–5)</label>
+          <input type="number" id="rating" class="input-sm" min="0" max="5" step="0.5" placeholder="e.g. 5" />
+        </div>
+        <div class="meta-field">
+          <label class="input-label small">Helpful Votes</label>
+          <input type="number" id="helpfulVote" class="input-sm" min="0" placeholder="e.g. 0" />
+        </div>
+        <div class="meta-field checkbox-field">
+          <label class="input-label small">Verified Purchase</label>
+          <label class="toggle">
+            <input type="checkbox" id="verifiedPurchase" />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <button class="btn-primary" id="analyzeBtn">
+        <span class="btn-text">Run Detection</span>
+        <span class="btn-spinner hidden" id="btnSpinner">⟳</span>
+      </button>
+      <p class="error-msg hidden" id="singleError"></p>
+
+      <div class="result-card hidden" id="resultCard">
+        <div class="result-left">
+          <div class="result-label">VERDICT</div>
+          <div class="result-verdict" id="verdictText">—</div>
+          <div class="result-prob" id="resultProb"></div>
+          <div class="result-meta" id="resultMeta"></div>
+          <div class="result-meta" id="resultModelMeta"></div>
+          <div class="result-meta" id="comparisonMeta"></div>
+          <div class="result-meta" id="recommendationMeta"></div>
+        </div>
+        <div class="result-right">
+          <div class="result-label">FAKE CONFIDENCE</div>
+          <div class="score-display" id="scoreDisplay">0%</div>
+          <div class="score-bar-wrap">
+            <div class="score-bar" id="scoreBar"></div>
+          </div>
+          <div class="score-range">
+            <span>0%</span><span>100%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>Fake Review Detection System · Phase 1 · supports v1, v2, v3</p>
+  </footer>
+
+  <script src="/static/js/script.js"></script>
+</body>
+</html>
