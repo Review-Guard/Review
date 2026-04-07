@@ -250,4 +250,3 @@ def predict_single_v3(
         models_dir=models_dir,
     )[0]
     return result
-# Added some function
