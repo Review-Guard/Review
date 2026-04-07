@@ -6,7 +6,7 @@
   <title>Fake Review Detection System</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/static/css/style.css" />
+  <link rel="stylesheet" href="../static/css/style.css" />
 </head>
 <body>
   <div class="bg-grid"></div>
@@ -19,7 +19,7 @@
       </div>
       <div class="model-badge" id="modelBadge">
         <span class="badge-dot"></span>
-        <span class="badge-label">Checking API…</span>
+        <span class="badge-label">Checking model…</span>
       </div>
     </div>
   </header>
@@ -33,7 +33,14 @@
       <p class="hero-sub">Analyse customer reviews instantly and detect manipulation with confidence</p>
     </section>
 
-    <div class="panel">
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab active" data-tab="single">Single Review</button>
+      <button class="tab" data-tab="batch">Batch CSV Upload</button>
+    </div>
+
+    <!-- Single Review Panel -->
+    <div class="panel" id="panel-single">
       <div class="input-group">
         <label class="input-label">Review Text</label>
         <textarea
@@ -45,14 +52,6 @@
       </div>
 
       <div class="meta-row">
-        <div class="meta-field">
-          <label class="input-label small">Model Version</label>
-          <select id="modelVersionSelect" class="input-sm">
-            <option value="v1">v1</option>
-            <option value="v2">v2</option>
-            <option value="v3" selected>v3</option>
-          </select>
-        </div>
         <div class="meta-field">
           <label class="input-label small">Rating (1–5)</label>
           <input type="number" id="rating" class="input-sm" min="0" max="5" step="0.5" placeholder="e.g. 5" />
@@ -70,24 +69,22 @@
         </div>
       </div>
 
-      <button class="btn-primary" id="analyzeBtn">
+      <button class="btn-primary" id="analyzeBtn" onclick="analyzeReview()">
         <span class="btn-text">Run Detection</span>
         <span class="btn-spinner hidden" id="btnSpinner">⟳</span>
       </button>
       <p class="error-msg hidden" id="singleError"></p>
 
+      <!-- Result card -->
       <div class="result-card hidden" id="resultCard">
         <div class="result-left">
           <div class="result-label">VERDICT</div>
           <div class="result-verdict" id="verdictText">—</div>
           <div class="result-prob" id="resultProb"></div>
           <div class="result-meta" id="resultMeta"></div>
-          <div class="result-meta" id="resultModelMeta"></div>
-          <div class="result-meta" id="comparisonMeta"></div>
-          <div class="result-meta" id="recommendationMeta"></div>
         </div>
         <div class="result-right">
-          <div class="result-label">FAKE CONFIDENCE</div>
+          <div class="result-label">CONFIDENCE SCORE</div>
           <div class="score-display" id="scoreDisplay">0%</div>
           <div class="score-bar-wrap">
             <div class="score-bar" id="scoreBar"></div>
@@ -98,10 +95,45 @@
         </div>
       </div>
     </div>
+
+    <!-- Batch Panel -->
+    <div class="panel hidden" id="panel-batch">
+      <div class="upload-zone" id="uploadZone">
+        <div class="upload-icon">📂</div>
+        <p class="upload-title">Drag & drop your CSV file here</p>
+        <p class="upload-sub">or click to browse · Max 10 MB · Must have a <code>text</code> column</p>
+        <input type="file" id="csvFile" accept=".csv" class="file-input" />
+      </div>
+      <p class="file-hint" id="fileHint"></p>
+
+      <button class="btn-primary" id="batchBtn" onclick="runBatch()">
+        <span class="btn-text">Analyse CSV</span>
+        <span class="btn-spinner hidden" id="batchSpinner">⟳</span>
+      </button>
+      <p class="error-msg hidden" id="batchError"></p>
+
+      <div class="batch-results hidden" id="batchResults">
+        <div class="batch-summary" id="batchSummary"></div>
+        <div class="table-wrap">
+          <table class="results-table" id="resultsTable">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Review (truncated)</th>
+                <th>Verdict</th>
+                <th>Fake %</th>
+              </tr>
+            </thead>
+            <tbody id="resultsBody"></tbody>
+          </table>
+        </div>
+        <button class="btn-secondary" id="downloadBtn" onclick="downloadCSV()">⬇ Download Results CSV</button>
+      </div>
+    </div>
   </main>
 
   <footer class="footer">
-    <p>Fake Review Detection System · Phase 1 · supports v1, v2, v3</p>
+    <p>Fake Review Detection System · Phase 1 · <span id="modelVersion">—</span></p>
   </footer>
 
   <script src="/static/js/script.js"></script>
