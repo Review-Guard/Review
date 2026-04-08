@@ -30,7 +30,7 @@
         Fake Review<br />
         <span class="accent">Detection System</span>
       </h1>
-      <p class="hero-sub">Analyse customer reviews instantly and detect manipulation with confidence</p>
+      <p class="hero-sub">Analyse customer reviews instantly </p>
     </section>
 
     <div class="panel">
@@ -48,10 +48,10 @@
         <div class="meta-field">
           <label class="input-label small">Model Version</label>
           <select id="modelVersionSelect" class="input-sm">
-            <option value="v1">v1</option>
-            <option value="v2">v2</option>
-            <option value="v3" selected>v3</option>
-          </select>
+  <option value="v1">v1 - SGD (Text + Metadata)</option>
+  <option value="v2">v2 - Logistic Regression (Text)</option>
+  <option value="v3" selected>v3 - Ensemble Model (Best)</option>
+</select>
         </div>
         <div class="meta-field">
           <label class="input-label small">Rating (1–5)</label>
@@ -101,7 +101,7 @@
   </main>
 
   <footer class="footer">
-    <p>Fake Review Detection System · Phase 1 · supports v1, v2, v3</p>
+    <p>Fake Review Detection System supports v1, v2, v3</p>
   </footer>
 
   <script src="/static/js/script.js"></script>
