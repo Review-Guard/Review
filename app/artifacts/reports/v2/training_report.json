@@ -1,0 +1,107 @@
+{
+  "validation_candidates_ranked": [
+    {
+      "name": "logistic_regression",
+      "threshold": 0.44999999999999996,
+      "metrics": {
+        "precision": 0.6972176759410802,
+        "recall": 0.7417295414973882,
+        "f1": 0.718785151856018,
+        "roc_auc": 0.8320209563351433,
+        "brier": 0.16244155903975646,
+        "ece_10": 0.06498430775409607,
+        "threshold": 0.44999999999999996,
+        "confusion_matrix": [
+          [
+            1969,
+            555
+          ],
+          [
+            445,
+            1278
+          ]
+        ],
+        "class_1_ece": 0.06498430775409607,
+        "class_0_ece": 0.06498430775409608
+      }
+    },
+    {
+      "name": "sgd_log_loss",
+      "threshold": 0.49999999999999994,
+      "metrics": {
+        "precision": 0.7329305135951661,
+        "recall": 0.7040046430644226,
+        "f1": 0.7181764357608053,
+        "roc_auc": 0.8241586515245863,
+        "brier": 0.16353075949814538,
+        "ece_10": 0.05538645149908333,
+        "threshold": 0.49999999999999994,
+        "confusion_matrix": [
+          [
+            2082,
+            442
+          ],
+          [
+            510,
+            1213
+          ]
+        ],
+        "class_1_ece": 0.05538645149908333,
+        "class_0_ece": 0.055386451499083354
+      }
+    },
+    {
+      "name": "linear_svc_calibrated",
+      "threshold": 0.39999999999999997,
+      "metrics": {
+        "precision": 0.6872222222222222,
+        "recall": 0.7179338363319792,
+        "f1": 0.7022424070394551,
+        "roc_auc": 0.8191327274416329,
+        "brier": 0.16481141800175342,
+        "ece_10": 0.03732350227448163,
+        "threshold": 0.39999999999999997,
+        "confusion_matrix": [
+          [
+            1961,
+            563
+          ],
+          [
+            486,
+            1237
+          ]
+        ],
+        "class_1_ece": 0.03732350227448163,
+        "class_0_ece": 0.037323502274481654
+      }
+    }
+  ],
+  "selected_model": "logistic_regression",
+  "selected_threshold": 0.44999999999999996,
+  "test_metrics": {
+    "precision": 0.6899679829242262,
+    "recall": 0.7504352872896112,
+    "f1": 0.718932443703086,
+    "roc_auc": 0.8315999256815362,
+    "brier": 0.16287734939188786,
+    "ece_10": 0.06451614302045873,
+    "threshold": 0.44999999999999996,
+    "confusion_matrix": [
+      [
+        1943,
+        581
+      ],
+      [
+        430,
+        1293
+      ]
+    ],
+    "class_1_ece": 0.06451614302045873,
+    "class_0_ece": 0.0645161430204587
+  },
+  "residual_risk_note": "Near-duplicate audit is heuristic partial coverage; semantic paraphrase leakage may still exist.",
+  "calibration_contract": {
+    "validation_brier_target": 0.2,
+    "validation_ece_target": 0.08
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "model_name": "blend_text_and_metadata",
+  "model_version": "phase1-v3",
+  "blend_weight_text": 0.7,
+  "blend_weight_metadata": 0.30000000000000004,
+  "threshold": 0.45000000000000007,
+  "random_seed": 42,
+  "include_behavioral": "blended"
+}

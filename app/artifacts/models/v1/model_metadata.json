@@ -1,0 +1,14 @@
+{
+  "model_name": "sgd_log_loss",
+  "model_version": "phase1-v1",
+  "threshold": 0.39999999999999997,
+  "random_seed": 42,
+  "include_behavioral": true,
+  "xgboost_status": "disabled",
+  "training_seconds": 7.828516006469727,
+  "near_duplicate_rate_mean": 0.0,
+  "paths": {
+    "model": "phase1/artifacts/models/v1/best_model.joblib",
+    "vectorizer": "phase1/artifacts/models/v1/tfidf_vectorizer.joblib"
+  }
+}
