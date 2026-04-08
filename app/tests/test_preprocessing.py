@@ -11,7 +11,7 @@ WORKSPACE_ROOT = os.path.abspath(os.path.join(PHASE1_DIR, ".."))
 if WORKSPACE_ROOT not in sys.path:
     sys.path.insert(0, WORKSPACE_ROOT)
 
-from ml.training.feature_engineering import (  # noqa: E402
+from app.ml.training.feature_engineering import (  # noqa: E402
     build_numeric_features,
     build_text_columns,
     clean_text_for_model,
