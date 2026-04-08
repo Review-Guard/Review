@@ -1,0 +1,14 @@
+{
+  "model_name": "logistic_regression",
+  "model_version": "phase1-v2",
+  "threshold": 0.44999999999999996,
+  "random_seed": 42,
+  "include_behavioral": false,
+  "xgboost_status": "disabled",
+  "training_seconds": 14.001240730285645,
+  "near_duplicate_rate_mean": 0.0,
+  "paths": {
+    "model": "phase1/artifacts/models/v2/best_model.joblib",
+    "vectorizer": "phase1/artifacts/models/v2/tfidf_vectorizer.joblib"
+  }
+}

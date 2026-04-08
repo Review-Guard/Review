@@ -1,0 +1,39 @@
+{
+  "numeric_columns": [
+    "rating",
+    "helpful_vote",
+    "verified_purchase",
+    "char_count",
+    "word_count",
+    "avg_word_len",
+    "exclamation_count",
+    "question_count",
+    "punctuation_ratio",
+    "uppercase_ratio"
+  ],
+  "numeric_mean": {
+    "rating": 3.927367535744323,
+    "helpful_vote": 1.007165685449958,
+    "verified_purchase": 0.8942640874684609,
+    "char_count": 182.01133725820017,
+    "word_count": 34.89789739276703,
+    "avg_word_len": 5.319448559465951,
+    "exclamation_count": 0.5841547518923466,
+    "question_count": 0.021362489486963836,
+    "punctuation_ratio": 0.032261123493303415,
+    "uppercase_ratio": 0.047504874234459815
+  },
+  "numeric_std": {
+    "rating": 1.5135660984794008,
+    "helpful_vote": 6.630919857760235,
+    "verified_purchase": 0.30750448852010465,
+    "char_count": 250.74308936397765,
+    "word_count": 47.53109639416074,
+    "avg_word_len": 0.8510805726707151,
+    "exclamation_count": 1.3471154318827905,
+    "question_count": 0.22173594385543943,
+    "punctuation_ratio": 0.03181818826446436,
+    "uppercase_ratio": 0.08005590406268188
+  },
+  "include_behavioral": true
+}

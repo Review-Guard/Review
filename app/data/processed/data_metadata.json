@@ -1,0 +1,11 @@
+{
+  "source_dataset": "dataset/amazon_labeled_fake_reviews/final_labeled_fake_reviews.csv",
+  "label_direction": "Phase1 assumes label=1 is fake and label=0 is genuine; verify against dataset source notes.",
+  "rows_after_cleaning": 42466,
+  "split_files": [
+    "train.csv",
+    "calibration.csv",
+    "validation.csv",
+    "test.csv"
+  ]
+}
