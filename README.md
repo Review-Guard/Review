@@ -161,6 +161,16 @@ Near-duplicate audit
 Remaining Risk
 Paraphrased reviews may still exist → residual risk
 
+## 📊 Project Management (Jira)
+
+The project was managed using Jira with sprint planning and task tracking.
+
+### 🗂️ Jira Board Overview
+
+![Jira Board](images/jira-board.png)
+
+
+
 📅 Agile Milestones
 Planning & Dataset Preparation
 Model Development & Evaluation
