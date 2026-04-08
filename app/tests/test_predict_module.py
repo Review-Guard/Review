@@ -12,7 +12,7 @@ WORKSPACE_ROOT = os.path.abspath(os.path.join(PHASE1_DIR, ".."))
 if WORKSPACE_ROOT not in sys.path:
     sys.path.insert(0, WORKSPACE_ROOT)
 
-from ml import predict  # noqa: E402
+from app.ml import predict  # noqa: E402
 
 
 class TestPredictModule(unittest.TestCase):
@@ -38,9 +38,9 @@ class TestPredictModule(unittest.TestCase):
         self.assertAlmostEqual(float(scaled.loc[0, "rating"]), 1.0)
         self.assertAlmostEqual(float(scaled.loc[0, "verified_purchase"]), 0.0)
 
-    @patch("ml.predict.probability_from_model", return_value=np.array([0.82]))
-    @patch("ml.predict.build_feature_matrix", return_value=np.zeros((1, 2)))
-    @patch("ml.predict.load_artifacts")
+    @patch("app.ml.predict.probability_from_model", return_value=np.array([0.82]))
+    @patch("app.ml.predict.build_feature_matrix", return_value=np.zeros((1, 2)))
+    @patch("app.ml.predict.load_artifacts")
     def test_predict_batch_returns_expected_schema(self, mock_load, _mock_feat, _mock_prob):
         mock_model = object()
         mock_vectorizer = object()
