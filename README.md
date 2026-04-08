@@ -105,84 +105,96 @@ Review-1/
 │   └── src/
 └── images/
 
-⚙️ Installation
-pip install -r requirements.txt
+## ⚙️ Installation
+- pip install -r requirements.txt
 
 
 ```
-▶️ Run Application
-python3 run.py
+## ▶️ Run Application
+- python3 run.py
 
 
-Open in browser:
+##Open in browser:
 http://127.0.0.1:8000
 
 
 🏋️ Train Models
-🔹 Default Training (Recommended)
+## Default Training (Recommended)
 
-python app/ml/training/train_model.py \
+- python app/ml/training/train_model.py \
 --input_csv dataset/amazon_labeled_fake_reviews/final_labeled_fake_reviews.csv \
 --phase1_root app \
 --random_seed 42
 
 
-🔹 Train Model Versions
-v1 (Hybrid): Text + metadata
-v2 (Text-only): Only text features
-v3 (Best): Combined model
+## 🔹 Train Model Versions
+- v1 (Hybrid): Text + metadata
+- v2 (Text-only): Only text features
+- v3 (Best): Combined model
 
 
-# v1
-python app/ml/training/train_model.py --include_behavioral --model_version phase1-v1
+## v1
+- python app/ml/training/train_model.py --include_behavioral --model_version phase1-v1
 
-# v2
-python app/ml/training/train_model.py --model_version phase1-v2
 
-# v3 (Best)
-python app/ml/training/train_model_v3.py
+## v2
+- python app/ml/training/train_model.py --model_version phase1-v2
 
-Optional (Advanced)
 
-python app/ml/training/train_model.py --enable_xgboost
+## v3 (Best)
+- python app/ml/training/train_model_v3.py
 
-Run Tests
-python3 -m pytest -q app/tests
+
+
+## Optional (Advanced)
+
+- python app/ml/training/train_model.py --enable_xgboost
+
+## Run Tests
+- python3 -m pytest -q app/tests
+
 
 📊 Model Evaluation
-Accuracy (>80%)
-Precision
-Recall
-F1-Score
+- Accuracy (>80%)
+- Precision
+- Recall
+- F1-Score
+
 
 ⚠️ Risk & Validation
-To avoid data leakage:
-Text normalization + hashing
-Duplicate-safe splitting
-Near-duplicate audit
-Remaining Risk
-Paraphrased reviews may still exist → residual risk
+- To avoid data leakage:
+- Text normalization + hashing
+- Duplicate-safe splitting
+- Near-duplicate audit
+- Remaining Risk
+- Paraphrased reviews may still exist → residual risk
 
-## 📊 Project Management (Jira)
+
 
 ## 📊 Project Management (Jira)
 
 The project was managed using Jira with sprint planning and task tracking.
 
+
+
 ### 🗂️ Jira Board Overview
 
 ![Jira Board](images/jira-board.png)
 
-📅 Agile Milestones
-Planning & Dataset Preparation
-Model Development & Evaluation
-Web Application Integration
-Testing & Final Delivery
+## 📅 Agile Milestones
+- Planning & Dataset Preparation
+- Model Development & Evaluation
+- Web Application Integration
+- Testing & Final Delivery
 
-👥 Team
-Kriti Subedi
-Swapnali Kudale
-Aditi Sharma
 
-📜 License
+
+## 👥 Team
+- Kriti Subedi
+- Swapnali Kudale
+- Aditi Sharma
+
+
+
+## 📜 License
 Developed for academic purposes only.
