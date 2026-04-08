@@ -9,7 +9,7 @@ WORKSPACE_ROOT = os.path.abspath(os.path.join(PHASE1_DIR, ".."))
 if WORKSPACE_ROOT not in sys.path:
     sys.path.insert(0, WORKSPACE_ROOT)
 
-from backend.app import create_app  # noqa: E402
+from app.backend.app import create_app  # noqa: E402
 
 
 class TestApiEndpoints(unittest.TestCase):
@@ -38,7 +38,7 @@ class TestApiEndpoints(unittest.TestCase):
         res = self.client.post("/predict", json={"text": long_text})
         self.assertEqual(res.status_code, 413)
 
-    @patch("backend.app.run_prediction_for_version")
+    @patch("app.backend.app.run_prediction_for_version")
     def test_predict_success_response_contract(self, mock_predict):
         mock_predict.return_value = {
             "label": "genuine",
@@ -60,7 +60,7 @@ class TestApiEndpoints(unittest.TestCase):
         self.assertEqual(data["label"], "genuine")
         self.assertIn("latency_ms", data)
 
-    @patch("backend.app.run_prediction_for_version")
+    @patch("app.backend.app.run_prediction_for_version")
     def test_predict_all_disagreement_sets_manual_review(self, mock_predict):
         mock_predict.side_effect = [
             {"label": "fake", "fake_probability": 90.0, "threshold": 0.5, "model_version": "phase1-v1"},
