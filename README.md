@@ -111,7 +111,8 @@ Review-1/
 
 ```
 ## ▶️ Run Application
-- python3 run.py
+- python3 run.py mac
+- python run.py 
 
 
 ##Open in browser:
