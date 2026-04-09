@@ -123,9 +123,15 @@ def build_feature_matrix(df, vectorizer, feature_metadata):
 def build_behavioral_matrix(df):
     # Build behavioral-only matrix for v3 metadata model.
     out = pd.DataFrame(index=df.index)
-    out["rating"] = pd.to_numeric(df.get("rating"), errors="coerce").fillna(0.0)
-    out["helpful_vote"] = pd.to_numeric(df.get("helpful_vote"), errors="coerce").fillna(0.0)
-    out["verified_purchase"] = pd.to_numeric(df.get("verified_purchase"), errors="coerce").fillna(0.0)
+    rating = df["rating"] if "rating" in df.columns else pd.Series(0.0, index=df.index)
+    helpful_vote = df["helpful_vote"] if "helpful_vote" in df.columns else pd.Series(0.0, index=df.index)
+    verified_purchase = (
+        df["verified_purchase"] if "verified_purchase" in df.columns else pd.Series(0.0, index=df.index)
+    )
+
+    out["rating"] = pd.to_numeric(rating, errors="coerce").fillna(0.0)
+    out["helpful_vote"] = pd.to_numeric(helpful_vote, errors="coerce").fillna(0.0)
+    out["verified_purchase"] = pd.to_numeric(verified_purchase, errors="coerce").fillna(0.0)
     return out.values
 
 

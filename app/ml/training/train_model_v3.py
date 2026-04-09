@@ -187,5 +187,5 @@ def main():
     print("v3 test F1:", report["test_metrics"]["f1"])
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     main()
