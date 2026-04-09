@@ -233,5 +233,5 @@ def main():
     print(split_ratio_summary(split_df))
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     main()

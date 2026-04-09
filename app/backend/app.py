@@ -7,7 +7,7 @@ from flask import Flask, jsonify, render_template, request
 # Add project root to import path for direct script execution.
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 if ROOT_DIR not in sys.path:
-    sys.path.insert(0, ROOT_DIR)
+    sys.path.insert(0, ROOT_DIR)  # pragma: no cover
 
 PHASE1_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
@@ -207,7 +207,7 @@ def create_app():
 app = create_app()
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     # Run local development server.
     port = int(os.environ.get("PORT", "8000"))
     app.run(host="0.0.0.0", port=port, debug=False)
