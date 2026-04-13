@@ -32,8 +32,13 @@
       </h1>
       <p class="hero-sub">Analyse customer reviews instantly </p>
     </section>
-
-    <div class="panel">
+      <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab active" data-tab="single">Single Review</button>
+      <button class="tab" data-tab="batch">Batch CSV Upload</button>
+    </div>
+ <!-- Single Review Panel -->
+    <div class="panel" id="panel-single">
       <div class="input-group">
         <label class="input-label">Review Text</label>
         <textarea
@@ -98,6 +103,41 @@
         </div>
       </div>
     </div>
+    <!-- Batch Panel -->
+    <div class="panel hidden" id="panel-batch">
+      <div class="upload-zone" id="uploadZone">
+        <div class="upload-icon">📂</div>
+        <p class="upload-title">Drag & drop your CSV file here</p>
+        <p class="upload-sub">or click to browse · Max 10 MB · Must have a <code>text</code> column</p>
+        <input type="file" id="csvFile" accept=".csv" class="file-input" />
+      </div>
+      <p class="file-hint" id="fileHint"></p>
+
+      <button class="btn-primary" id="batchBtn" onclick="runBatch()">
+        <span class="btn-text">Analyse CSV</span>
+        <span class="btn-spinner hidden" id="batchSpinner">⟳</span>
+      </button>
+      <p class="error-msg hidden" id="batchError"></p>
+
+      <div class="batch-results hidden" id="batchResults">
+        <div class="batch-summary" id="batchSummary"></div>
+        <div class="table-wrap">
+          <table class="results-table" id="resultsTable">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Review (truncated)</th>
+                <th>Verdict</th>
+                <th>Fake %</th>
+              </tr>
+            </thead>
+            <tbody id="resultsBody"></tbody>
+          </table>
+        </div>
+        <button class="btn-secondary" id="downloadBtn" onclick="downloadCSV()">⬇ Download Results CSV</button>
+      </div>
+    </div>
+
   </main>
 
   <footer class="footer">
