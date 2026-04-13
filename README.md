@@ -2,65 +2,64 @@
 
 ## 📌 Project Overview
 
+This project was developed by a three-person academic team over 10 weeks (part-time, $0 budget).
+
 The **Review Guard System** is a locally runnable web application that uses **Natural Language Processing (NLP)** and **Machine Learning** to classify online reviews as:
 
 - ✅ Genuine  
 - ❌ Fake  
 
-Users can:
-- Analyze a single review  
-- View prediction with Fake probability confidence score  
-- Switch between different ML models  
+## 🚀 Features
+- Single review prediction  
+- Batch CSV upload and processing 
+- Fake/Genuine classification  
+- Fake probability score output  
+- Download results as CSV  
+- Multiple model support (v1, v2, v3)  
+- Fully offline system  
 
-This project was developed by a three-person academic team over 10 weeks (part-time, $0 budget).
 
----
+
+```markdown
+## 📂 CSV Format
+
+The CSV file must contain the following columns:
+
+text,rating,helpful_vote,verified_purchase
+
 
 ## 🎯 Project Goals
 
-- Achieve **>80% classification accuracy**
-- Build a **fully offline web application**
-- Follow **Agile development methodology**
+- Achieve **greater than 80% classification accuracy** on unseen test data  
+- Develop a **fully offline, locally runnable web application**  
+- Support both **single review prediction and batch CSV processing**  
+- Provide **fake probability scores for each prediction** 
+- Follow an **Agile development methodology with iterative improvements**  
+- Ensure **fast response time and user-friendly interface**  
 
----
 
-## 🛠️ Key Features
+## 🛠️ Technologies Used
 
-- Single review classification  
-- Confidence score output  
-- Model selection (v1, v2, v3)  
-- Simple web interface (Bootstrap-based UI)  
-- Fully offline execution  
-
----
-
-## 🧠 Technology Stack
-
-- **Backend:** Python (Flask 2.x)  
+- **Backend:** Python (Flask)  
 - **Frontend:** HTML, CSS, JavaScript  
 - **ML/NLP:** Scikit-learn, NLTK  
-- **Data Processing:** Pandas  
-- **Model Serialization:** Joblib  
+- **Data Processing:** Pandas, NumPy  
+- **Model Storage:** Joblib  
 - **Testing:** Pytest  
-
----
+- **CI/CD:** GitHub Actions  
+ 
 
 ## 📂 Dataset
 
-### Label Direction
+### Label Definition
 
-- `label = 1 → fake`  
-- `label = 0 → genuine`  
+- `1` → Fake review  
+- `0` → Genuine review  
 
----
+Note: The model uses binary classification where 1 represents fake and 0 represents genuine.
 
-## 🧠 Models
 
-- **v1 (Hybrid):** Text + metadata  
-- **v2 (Text-only):** Only text features  
-- **v3 (Best Model):** Blended model combining v1 + v2  
 
----
 
 ## 📂 Project Structure
 
@@ -109,14 +108,10 @@ Review-1/
 - pip install -r requirements.txt
 
 
-```
-## ▶️ Run Application
-- python3 run.py mac
-- python run.py 
+## ✅ RUN APPLICATION
 
-
-##Open in browser:
-http://127.0.0.1:8000
+```bash
+python3 run.py
 
 
 🏋️ Train Models
@@ -129,9 +124,10 @@ http://127.0.0.1:8000
 
 
 ## 🔹 Train Model Versions
-- v1 (Hybrid): Text + metadata
-- v2 (Text-only): Only text features
-- v3 (Best): Combined model
+- **v1 (Hybrid):** Text + metadata  
+- **v2 (Text-only):** Only text features  
+- **v3 (Best Model):** Blended model combining v1 + v2  
+
 
 
 ## v1
@@ -144,6 +140,16 @@ http://127.0.0.1:8000
 
 ## v3 (Best)
 - python app/ml/training/train_model_v3.py
+
+## 🧪 Testing
+
+- 106 test cases implemented  
+- 100% pass rate  
+- Includes:
+  - Unit Testing  
+  - Integration Testing  
+  - Security Testing  
+  - Regression Testing  
 
 
 
@@ -169,6 +175,11 @@ http://127.0.0.1:8000
 - Near-duplicate audit
 - Remaining Risk
 - Paraphrased reviews may still exist → residual risk
+
+## ⚙️ CI/CD
+
+- GitHub Actions used  
+- Automated testing on every push  
 
 
 
