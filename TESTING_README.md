@@ -170,7 +170,7 @@ Executed via `pytest` (`app/tests`):
 Unit test command:
 
 ```zsh
-PYTHONPATH=/Users/kriti/Review-1/app /Users/kriti/Review-1/.venv/bin/python -m pytest -q app/tests
+PYTHONPATH=app python -m pytest -q app/tests
 ```
 
 Result: **106 passed**.
@@ -190,7 +190,7 @@ Performed via API negative checks:
 Command:
 
 ```zsh
-PYTHONPATH=/Users/kriti/Review-1/app /Users/kriti/Review-1/.venv/bin/python app/tests/run_additional_checks.py
+PYTHONPATH=app python app/tests/run_additional_checks.py
 ```
 
 #### 3.3.2 Performance (Lightweight Local)
@@ -235,7 +235,7 @@ Overall outcome:
 ## 5. Test Metrics and Summary
 
 - Requirement coverage (executed subset): high for core API + validation + ML inference path.
-- Code coverage (latest measured run): `app/backend/app.py` 100%, `app/ml/predict.py` 100%, training modules 100%, overall measured total 100%.
+-Code coverage (latest measured run): app/backend/app.py ~100%, app/ml/predict.py ~100%, training modules ~100%. High code coverage achieved for core modules (approx. 90–100%).
 - Coverage note: training pipeline modules are now included in automated tests.
 - Defect density (executed suites): low (no functional failures).
 - Automated vs manual: predominantly automated.
@@ -252,22 +252,25 @@ Overall outcome:
 
 ---
 
+> Run commands from project root directory
+
 ## Commands Reference
 
 ### Unit + regression tests
 
 ```zsh
-PYTHONPATH=/Users/kriti/Review-1/app /Users/kriti/Review-1/.venv/bin/python -m pytest -q app/tests
+PYTHONPATH=app python -m pytest -q app/tests
 ```
 
 ### Additional integration + security + perf checks
 
 ```zsh
-PYTHONPATH=/Users/kriti/Review-1/app /Users/kriti/Review-1/.venv/bin/python app/tests/run_additional_checks.py
+PYTHONPATH=app python app/tests/run_additional_checks.py
 ```
 
 ### Coverage run
+> Run from project root directory after activating virtual environment
 
 ```zsh
-PYTHONPATH=/Users/kriti/Review-1/app /Users/kriti/Review-1/.venv/bin/python -m pytest -q app/tests --cov=app/backend --cov=app/ml --cov-report=term-missing
+PYTHONPATH=app python -m pytest app/tests --cov=app/backend --cov=app/ml --cov-report=term-missing
 ```
